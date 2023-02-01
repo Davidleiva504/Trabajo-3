@@ -7,8 +7,6 @@ app.use(express.json());
 app.get('/api/telefonos/', (req, res)=>{
 
 
-   
-
     let con = mysql.createConnection({
         host: "127.0.0.1",
         user: "root",
@@ -76,7 +74,7 @@ app.post('/api/telefono/', (req, res)=>{
     });
 
     let sql = "insert into tbl_Telefono " +
-            " (nombre_persona, apellido_Telefono, fecha_nacimiento) " +
+            " (apellido_Telefono, Id) " +
             " values (?, ?, ?)";
     
     let parametros = [  req.body.nombre_persona, 
@@ -100,7 +98,7 @@ app.post('/api/telefono/', (req, res)=>{
     });
 } );
 
-app.put('/api/persona/:id', (req, res)=>{
+app.put('/api/telefono/:id', (req, res)=>{
 
 
     let con = mysql.createConnection({
@@ -110,14 +108,14 @@ app.put('/api/persona/:id', (req, res)=>{
         database: "Base"
     });
 
-    let sql = " update tbl_persona set nombre_persona = ?, " +
-                " apellido_persona = ?,  "+
-                " fecha_nacimiento = ? "+
+    let sql = " update tbl_telefono set nombre_persona = ?, " +
+                " set numero = ?,  "+
+                " where id_telefono = ? ";
                 " where id_persona = ? ";
 
-    let parametros = [  req.body.nombre_persona, 
-                        req.body.apellido_persona, 
-                        req.body.fecha_nacimiento, 
+    let parametros = [  req.body.Id_telefono, 
+                        req.body.Id_persona, 
+                        req.body.numero, 
                         req.params.id];
 
     con.connect(function(err){
@@ -137,7 +135,7 @@ app.put('/api/persona/:id', (req, res)=>{
 
 });
 
-app.delete('/api/persona/:id', (req, res)=>{
+app.delete('/telefono/:id', (req, res)=>{
 
     let con = mysql.createConnection({
         host: "127.0.0.1",
