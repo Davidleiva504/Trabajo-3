@@ -19,7 +19,7 @@ create table tbl_telefonos
 -- Bulk Insert
 insert into tbl_persona ( nombre_persona, apellido_persona, fecha_nacimiento)
 values
-    ('Cristiano', 'Ronaldo', '1985-02-05'),
+    ('Cristiano Ronaldo', 'Ronaldo', '1985-02-05'),
     ('Leonel', 'Messi', '1988-08-30'),
     ('Alex', 'Morgan', '1990-12-15');
 
